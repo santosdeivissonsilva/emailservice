@@ -12,31 +12,31 @@ import com.amazonaws.services.simpleemail.model.Message;
 import com.amazonaws.services.simpleemail.model.SendEmailRequest;
 
 import com.deivi.emailservice.adapters.EmailSenderGateway;
+import com.deivi.emailservice.core.exceptions.EmailServiceException;
 
 @Service
-public class SesEmailSender implements EmailSenderGateway{
+public class SesEmailSender implements EmailSenderGateway {
 
     private final AmazonSimpleEmailService amazonSimpleEmaiService;
 
     @Autowired
-    public SesEmailSender(AmazonSimpleEmailService amazonSimpleEmaiService){
+    public SesEmailSender(AmazonSimpleEmailService amazonSimpleEmaiService) {
         this.amazonSimpleEmaiService = amazonSimpleEmaiService;
     }
 
     @Override
     public void sendEmail(String to, String subject, String body) {
         SendEmailRequest request = new SendEmailRequest()
-            .withSource("massages.deivisson-noreply@outlook.com")
-            .withDestination(new Destination().withToAddresses(to))
-            .withMessage(new Message()
-                .withSubject(new Content(subject))
-                .withBody(new Body().withText(new Content(body)))
-            );
-    try{
-        this.amazonSimpleEmaiService.sendEmail(request);
-    } catch (AmazonServiceException exception) {
-        throw new EmailRequestException("Failure while sending email");
+                .withSource("massages.deivisson-noreply@outlook.com")
+                .withDestination(new Destination().withToAddresses(to))
+                .withMessage(new Message()
+                        .withSubject(new Content(subject))
+                        .withBody(new Body().withText(new Content(body))));
+        try {
+            this.amazonSimpleEmaiService.sendEmail(request);
+        } catch (AmazonServiceException exception) {
+            throw new EmailServiceException("Failure while sending email", exception);
+        }
     }
-    }
-    
+
 }
