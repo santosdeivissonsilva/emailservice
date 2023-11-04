@@ -1,4 +1,4 @@
-package com.deivi.emailservice.infra.ses;
+package com.deivi.emailservice.infra.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
