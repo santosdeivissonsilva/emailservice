@@ -30,3 +30,6 @@ Após, dentro do IntelliJ, deve instalar as depedências com o Maven
 
 E por fim, entre no arquivo da classe `EmailServiceApplication` para executar o projeto.
 
+## Créditos
+Este projeto foi baseado na resolução de desafio de código da empresa Uber proposto pela Engenheira de Software Fernanda Kipper [LinkedIn](https://www.linkedin.com/in/fernanda-kipper/).
+Algumas das configurações foram realizadas com o apoio da Desenvolvedora de Softwre Camila Cavalcante [LinkedIn](https://www.linkedin.com/in/cami-la/)
